@@ -19,7 +19,7 @@ services:
     - catalogue
 
   redis:
-    image: redis:1
+    
 
   user:
     image: user:1
