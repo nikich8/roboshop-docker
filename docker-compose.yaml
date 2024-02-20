@@ -43,10 +43,10 @@ services:
     container_name: mysql:1
 
   shipping:
-  image: shipping:1
-  container_name: shipping:1
-  depends_on:
-  - mysql  
+    image: shipping:1
+    container_name: shipping:1
+    depends_on:
+    - mysql  
 
 
 
