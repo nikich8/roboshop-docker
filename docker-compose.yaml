@@ -5,17 +5,17 @@ networks:
 services:
   mongodb: 
     image: mongodb:1
-    container_name: mongodb:1
+    container_name: mongodb
 
   catalogue:
     image: catalogue:1
     depends_on:
     - mongodb
-    container_name: catalogue:1
+    container_name: catalogue
 
   web:
     image: web:1
-    container_name: web:1
+    container_name: web
     ports:
     - "80:80"
     depends_on:
@@ -23,28 +23,29 @@ services:
 
   redis:
     image: redis
-    container_name: redis:1
+    container_name: redis
 
   user:
     image: user:1
-    container_name: user:1
+    container_name: user
     depends_on:
     - redis
     - mongodb
 
   cart:
     image: cart:1
-    container_name: cart:1
+    container_name: cart
     depends_on:
     - redis
-    - catalogue  
+    - catalogue
+
   mysql:
     image: mysql:1
-    container_name: mysql:1
+    container_name: mysql
 
   shipping:
     image: shipping:1
-    container_name: shipping:1
+    container_name: shipping
     depends_on:
     - mysql  
 
