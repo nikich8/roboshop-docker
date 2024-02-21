@@ -4,17 +4,17 @@ networks:
     name: roboshop
 services:
   mongodb: 
-    image: mongodb:1
+    image: mongodb:v1
     container_name: mongodb
 
   catalogue:
-    image: catalogue:1
+    image: catalogue:v1
     depends_on:
     - mongodb
     container_name: catalogue
 
   web:
-    image: web:1
+    image: web:v1
     container_name: web
     ports:
     - "80:80"
@@ -26,25 +26,25 @@ services:
     container_name: redis
 
   user:
-    image: user:1
+    image: user:v1
     container_name: user
     depends_on:
     - redis
     - mongodb
 
   cart:
-    image: cart:1
+    image: cart:v1
     container_name: cart
     depends_on:
     - redis
     - catalogue
 
   mysql:
-    image: mysql:1
+    image: mysql:v1
     container_name: mysql
 
   shipping:
-    image: shipping:1
+    image: shipping:v1
     container_name: shipping
     depends_on:
     - mysql  
