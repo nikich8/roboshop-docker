@@ -2,10 +2,20 @@ networks:
   default:
     external: true
     name: roboshop
+volumes:
+  mongodb:
+  redis:
+  mysql:
+
+
 services:
   mongodb: 
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+    - source: mongodb
+      target: /data/db
+      type: volume
 
   catalogue:
     image: catalogue:v1
@@ -24,6 +34,10 @@ services:
   redis:
     image: redis
     container_name: redis
+    volumes:
+    - source: mongodb
+      target: /data
+      type: volume
 
   user:
     image: user:v1
@@ -42,6 +56,10 @@ services:
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+    - source: mongodb
+      target: /var/lib/mysql
+      type: volume
 
   shipping:
     image: shipping:v1
